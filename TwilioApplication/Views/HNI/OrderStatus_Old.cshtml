@@ -1,0 +1,489 @@
+﻿@model TwilioApplication.Models.HNIModel
+
+@{
+    ViewBag.Title = "Order Status";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<div class="container">
+    <div class="row">
+        <h4 style="padding: 10px 0;"><strong>Order Status</strong></h4>
+        <div class="col-md-3 col-md-offset-3">
+            <label for="optDaily">
+                @if (Model.OrderstatusType == "B")
+                {
+                    <input name="intervaltype" onclick="LoadBreakfast()" checked type="radio" data-target="#scheduleDaily">
+                }
+                else
+                {
+                    <input name="intervaltype" onclick="LoadBreakfast()" type="radio" data-target="#scheduleDaily">
+                }
+                Breakfast</label>
+        </div>
+        <div class="col-md-2">
+            <label for="optWeekly">
+                @if (Model.OrderstatusType == "L")
+                {
+                    <input name="intervaltype" onclick="LoadLunch()" checked type="radio" data-target="#scheduleWeekly">
+                }
+                else
+                {
+                    <input name="intervaltype" onclick="LoadLunch()" type="radio" data-target="#scheduleWeekly">
+                }
+
+                Lunch</label>
+        </div>
+        <div class="col-md-12" style="margin: 20px 0 0 0;">
+            <div class="tab-content">
+                <div id="scheduleDaily" class="tab-pane active">
+
+                    <div class="table-responsive">
+                        <table id="example" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="5%">Select</th>
+                                    <th width="8%">Phone</th>
+                                    <th width="71%">Pseudonym</th>
+                                    <th width="6%">Ordered</th>
+                                    <th width="5%">Placed</th>
+                                    <th width="5%">Pickup</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.getOrderStatusB.Count > 0 && Model.getOrderStatusB != null)
+                                {
+                                    foreach (var item in Model.getOrderStatusB)
+                                    {
+                                    <tr>
+                                        <td align="center" valign="middle">
+                                            <input  name="select" type="radio" class="selectradio" value="@item.phone"></td>
+                                        <td align="left" valign="middle">@item.phone</td>
+                                        <td>@item.name</td>
+                                        <td align="center" valign="middle">
+                                            @{string ordered, placed, pickup;
+                                              ordered = item.ordered == "Y" ? "checked" : string.Empty;
+                                              placed = item.orderplaced == "Y" ? "checked" : string.Empty;
+                                              pickup = item.orderpicked == "Y" ? "checked" : string.Empty;
+                                             
+                                            }
+                                            <input name="select" type="checkbox" value="" @ordered  onclick="return false"></td>
+                                        <td align="center" valign="middle">
+                                            <input name="select" id="@item.phone.Replace("+","")" type="checkbox" value="@item.phone"  @placed disabled></td>
+                                        <td align="center" valign="middle">
+                                            <input name="select" type="checkbox" value=""  @pickup onclick="return false"></td>
+                                    </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clearfix">
+                         <button type="Submit" style="width:80px;float:right" id="btnsubmit" class="form-control btn-primary col-md-4" onclick="Savedata()" disabled>Save</button>
+                        <button type="Submit" style="width:80px;float:right"  class="form-control btn-primary col-md-4" onclick="Refresh()">Refresh</button>
+
+                    </div>
+
+                    <div class="clearfix" style="margin: 0 0 60px 0;">
+                        <div class="col-md-8" style="padding-left: 0px;">
+                            <div class="border-box clearfix" style="padding-bottom: 15px;">
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="heading-box">&nbsp;</div>
+                                    </div>
+                                    <div class="form-horizontal form-horizontal-left">
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Name</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="name"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Phone</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="ph"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Location</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="location">&nbsp;</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Lunch Menu</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="lunch"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Dietary Restrictions</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="Dietary"></p>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-horizontal form-horizontal-left">
+                                        <div class="col-md-12">
+                                            <div class="heading-box"><strong>Preferences</strong></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Breads</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="bread"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Cheese</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="cheese"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Veggies</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="veggies"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Sauces</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="sauces"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Seasonings</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="seasonings"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Drinks</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="drinks"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6">Sides</label>
+                                            <div class="col-xs-6">
+                                                <p class="form-control-static" id="slides"></p>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="padding-right: 0px;">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="logTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Log</th>
+                                            <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <div class="col-md-3">
+                            <div class="table-responsive">
+                                <table class="table table-bordered ">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: none !important;" height="54" align="center" valign="middle" style="border-bottom: none;">
+                                                <h3><strong>@Model.getOrderStatusTotal[0].NoofSMSMessage.ToString()</strong></h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: none !important;" align="center" valign="middle">No of SMS Message</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="table-responsive">
+                                <table class="table table-bordered ">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: none !important;" align="center" valign="middle">
+                                                <h3><strong>@Model.getOrderStatusTotal[0].NoofOrdersReceived.ToString()</strong></h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: none !important;" align="center" valign="middle">No of Orders Received</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: none !important;" align="center" valign="middle">
+                                                <h3><strong>@Model.getOrderStatusTotal[0].NoofOrdersReceived</strong></h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: none !important;" align="center" valign="middle">No of Orders Placed</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: none !important;" align="center" valign="middle">
+                                                <h3><strong>@Model.getOrderStatusTotal[0].NoofOrdersPickedup.ToString()</strong></h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: none !important;" align="center" valign="middle">No of Orders Picked up</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>Prepecence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td width="16%">No Of SMS Message</td>
+        <td width="84%">10</td>
+      </tr>
+      <tr>
+        <td>No Of Orders Received</td>
+        <td>5</td>
+      </tr>
+      <tr>
+         <td>No Of Orders Place</td>
+        <td>5</td>
+      </tr>    
+      <tr>
+         <td>No Of Orders Pickup</td>
+        <td>5</td>
+        
+      </tr>
+    </tbody>
+  </table>
+    </div> -->
+                    </div>
+                </div>
+                <div id="scheduleWeekly" class="tab-pane">Lunch</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pop"></div>
+<input type="hidden" id="type" value="@Session["type"].ToString()" />
+<input type="hidden" id="phnumber" value="" />
+<input type="hidden" id="prevchk" value="" />
+<script type="text/javascript">
+
+
+
+    function LoadBreakfast() {
+
+        window.location.href = '@Url.Action("OrderStatus", "HNI", new { type = "B" })';
+        $('#type').val("B");
+    }
+
+    function LoadLunch() {
+
+        window.location.href = '@Url.Action("OrderStatus", "HNI", new { type = "L" })';
+        $('#type').val("L");
+
+       
+
+    }
+
+    function Refresh() {
+        var type = $('#type').val();
+       
+        if (type == "B" || type == "") {
+            window.location.href = '@Url.Action("OrderStatus", "HNI", new { type = "B" })';
+        }
+        else {
+            window.location.href = '@Url.Action("OrderStatus", "HNI", new { type = "L" })';
+        }
+
+    }
+
+    function Savedata() {
+        if (!$('#' + $('#phnumber').val().replace('+', '')).is(":checked")) {
+            alert('Please checked the checked of selected row');
+        }
+        else {
+            var type = $('#type').val();
+            var phonenumber = $('#phnumber').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("insertORderStatus", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'phonenumber': phonenumber, 'type': type },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data == true) {
+                        alert('Record Inserted successfully')
+                    }
+                    else {
+                        alert('Record not inserted into the DB. Please contact administrator!!!')
+                    }
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+        }
+    }
+    
+
+</script>
+<script>
+    $(document).ready(function () {
+        //$(".selectradio").click(function () {
+        //    alert($(this).val());
+        //});
+
+        $(".selectradio").click(function () {
+            var $row = $(this).parent().parent();
+            var valueOfRadio = $(this).val();//$('input[name=select]:checked').val();
+
+            if ($('#phnumber').val() == "") {
+                $('#' + valueOfRadio.replace('+', '')).removeAttr("disabled");
+            }
+            if ($('#phnumber').val() != valueOfRadio) {
+                $('#' + $('#phnumber').val().replace('+', '')).attr("disabled", true);
+                $('#' + valueOfRadio.replace('+', '')).removeAttr("disabled");
+            }
+            $('#phnumber').val(valueOfRadio);
+            var type = $('#type').val();
+            // alert(valueOfRadio);
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getOrderselectdetail", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'phonenumber': valueOfRadio, 'type': type },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // alert(data[0].dietaryrestrictions);
+                    $('#name').html(data[0].Name);
+                    $('#ph').html(data[0].Phonenumber);
+                    $('#location').html(data[0].Location);
+                    $('#lunch').html(data[0].Lunchmenu);
+                    $('#Dietary').html(data[0].dietaryrestrictions);
+                    $('#bread').html(data[0].breads);
+                    $('#cheese').html(data[0].cheese);
+                    $('#veggies').html(data[0].veggies);
+                    $('#sauces').html(data[0].sauces);
+                    $('#seasonings').html(data[0].seasonings);
+                    $('#drinks').html(data[0].drinks);
+                    $('#slides').html(data[0].sides);
+                    loadDetail(data[0].Phonenumber);
+                    btnsubmit
+                    $('#btnsubmit').removeAttr("disabled");
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+        });
+        function loadDetail(phonenumber) {
+            var type = $('#type').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getOrderlogdetail", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'phonenumber': phonenumber, 'type': type },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // alert(data[0].dietaryrestrictions);
+                    $("#logTable").find('tbody').empty();
+                    $("#logTable").append("<tbody />")
+                    for (var i = 0; i < data.length; i++) {
+                        var row = $("<tr />")
+                       // var date = new Date(parseInt(Date.parse(data[i].statusdatetime)));
+                        var parsedDate = new  Date(parseInt(data[i].statusdatetime.substr(6)));
+                        var jsDate = new Date(parsedDate);
+                        
+                        // var d = new data(data[i].statusdatetime)
+                        $("#logTable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+                        row.append($("<td>" + parseInt(i + 1) + "</td>"));
+                        //row.append($("<td>" + data[i].statusdatetime + "</td>"));
+                        row.append($("<td>" + jsDate.getDate()+"/"+jsDate.getMonth()+"/"+jsDate.getFullYear() +" " +jsDate.getHours()+":"+jsDate.getMinutes() +":"+jsDate.getSeconds() + "</td>"));
+                        row.append($("<td>" + data[i].status + "</td>"));
+                    }
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+
+        }
+
+        @*$("#chkplaced").click(function () {
+            var type = $('#type').val();
+            var phonenumber = $('#phnumber').val();
+           // alert(phonenumber);
+            if (phonenumber == undefined || phonenumber == "") {
+                alert('Please select the record first'); return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("insertORderStatus", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'phonenumber': phonenumber, 'type': type },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data == true) {
+                        alert('Record Inserted successfully')
+                    }
+                    else {
+                        alert('Record not inserted into the DB. Please contact administrator!!!')
+                    }
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+        });*@
+
+    });
+</script>

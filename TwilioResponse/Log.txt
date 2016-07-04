@@ -1,0 +1,31 @@
+2223	
+--- 01-06-2016 17:28:55,,,---ERROR: Response invalid. Please try again	
+--- 01-06-2016 17:30:122223	
+--- 01-06-2016 17:32:30,,,---ERROR: Response invalid. Please try again	
+--- 01-06-2016 17:33:502223	
+--- 01-06-2016 17:58:06,,,---Please choose Subway location.  Text :
+'1' 13435 Washington Blvd
+'2' 1411 Lincoln Blvd
+'3' 245 Main St
+'4' 1606 Pacific Ave
+'5' 509 W Washington Blvd	
+--- 01-06-2016 18:05:222223	
+--- 01-06-2016 18:07:14,,,---Thank you for selecting your location. Please reply with your menu choice
+''''1'''' Ham Egg Cheese
+''''2'''' Bacon Egg Cheese
+''''3'''' Steak Egg Cheese	
+--- 01-06-2016 18:08:032223	
+--- 01-06-2016 18:09:18,,,---Error while retrieving the response	
+--- 01-06-2016 18:09:362223	
+--- 01-06-2016 18:09:55,,,---Please choose Subway location.  Text :
+'1' 13435 Washington Blvd
+'2' 1411 Lincoln Blvd
+'3' 245 Main St
+'4' 1606 Pacific Ave
+'5' 509 W Washington Blvd	
+--- 01-06-2016 18:10:132223	
+--- 01-06-2016 18:10:18,,,---Thank you for selecting your location. Please reply with your menu choice
+''1'' Ham Egg Cheese
+''2'' Bacon Egg Cheese
+''3'' Steak Egg Cheese	
+--- 01-06-2016 18:10:43

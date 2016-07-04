@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="twiliodevModelStoreContainer" CdmEntityContainer="twilioEntities">
+    <EntitySetMapping Name="breads">
+      <EntityTypeMapping TypeName="twiliodevModel.bread">
+        <MappingFragment StoreEntitySet="breads">
+          <ScalarProperty Name="breadmenuid" ColumnName="breadmenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cheesemenus">
+      <EntityTypeMapping TypeName="twiliodevModel.cheesemenu">
+        <MappingFragment StoreEntitySet="cheesemenu">
+          <ScalarProperty Name="cheesemenuid" ColumnName="cheesemenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dietaryrestsrictions">
+      <EntityTypeMapping TypeName="twiliodevModel.dietaryrestsriction">
+        <MappingFragment StoreEntitySet="dietaryrestsrictions">
+          <ScalarProperty Name="restrictid" ColumnName="restrictid" />
+          <ScalarProperty Name="menufor" ColumnName="menufor" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="drinksmenus">
+      <EntityTypeMapping TypeName="twiliodevModel.drinksmenu">
+        <MappingFragment StoreEntitySet="drinksmenu">
+          <ScalarProperty Name="drinksmenuid" ColumnName="drinksmenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="foodmenus">
+      <EntityTypeMapping TypeName="twiliodevModel.foodmenu">
+        <MappingFragment StoreEntitySet="foodmenu">
+          <ScalarProperty Name="foodmenuid" ColumnName="foodmenuid" />
+          <ScalarProperty Name="menufor" ColumnName="menufor" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lunchmenus">
+      <EntityTypeMapping TypeName="twiliodevModel.lunchmenu">
+        <MappingFragment StoreEntitySet="lunchmenu">
+          <ScalarProperty Name="lunchmenuid" ColumnName="lunchmenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewRegistrations">
+      <EntityTypeMapping TypeName="twiliodevModel.NewRegistration">
+        <MappingFragment StoreEntitySet="NewRegistration">
+          <ScalarProperty Name="Phonenumber" ColumnName="Phonenumber" />
+          <ScalarProperty Name="phid" ColumnName="phid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewRegnentries">
+      <EntityTypeMapping TypeName="twiliodevModel.NewRegnentry">
+        <MappingFragment StoreEntitySet="NewRegnentries">
+          <ScalarProperty Name="regnid" ColumnName="regnid" />
+          <ScalarProperty Name="Phonenumbers" ColumnName="Phonenumbers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="participatingindividuals">
+      <EntityTypeMapping TypeName="twiliodevModel.participatingindividual">
+        <MappingFragment StoreEntitySet="participatingindividuals">
+          <ScalarProperty Name="recordid" ColumnName="recordid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="pseudonym" ColumnName="pseudonym" />
+          <ScalarProperty Name="FoodPreferences" ColumnName="FoodPreferences" />
+          <ScalarProperty Name="DietaryRestrictions" ColumnName="DietaryRestrictions" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="sendphone" ColumnName="sendphone" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="participatingfor" ColumnName="participatingfor" />
+          <ScalarProperty Name="bread" ColumnName="bread" />
+          <ScalarProperty Name="cheese" ColumnName="cheese" />
+          <ScalarProperty Name="veggies" ColumnName="veggies" />
+          <ScalarProperty Name="sauces" ColumnName="sauces" />
+          <ScalarProperty Name="Seasonings" ColumnName="Seasonings" />
+          <ScalarProperty Name="drinks" ColumnName="drinks" />
+          <ScalarProperty Name="sides" ColumnName="sides" />
+          <ScalarProperty Name="lunchmenu" ColumnName="lunchmenu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="participatinglocations">
+      <EntityTypeMapping TypeName="twiliodevModel.participatinglocation">
+        <MappingFragment StoreEntitySet="participatinglocations">
+          <ScalarProperty Name="locationid" ColumnName="locationid" />
+          <ScalarProperty Name="locationaddress" ColumnName="locationaddress" />
+          <ScalarProperty Name="participatingfor" ColumnName="participatingfor" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="displayorder" ColumnName="displayorder" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="receivedtransactions">
+      <EntityTypeMapping TypeName="twiliodevModel.receivedtransaction">
+        <MappingFragment StoreEntitySet="receivedtransactions">
+          <ScalarProperty Name="receivedtransactionid" ColumnName="receivedtransactionid" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="Responsereceived" ColumnName="Responsereceived" />
+          <ScalarProperty Name="datetimereceived" ColumnName="datetimereceived" />
+          <ScalarProperty Name="transactionfor" ColumnName="transactionfor" />
+          <ScalarProperty Name="actualtransaction" ColumnName="actualtransaction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="saucesmenus">
+      <EntityTypeMapping TypeName="twiliodevModel.saucesmenu">
+        <MappingFragment StoreEntitySet="saucesmenu">
+          <ScalarProperty Name="saucesmenuid" ColumnName="saucesmenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seasoningsmenus">
+      <EntityTypeMapping TypeName="twiliodevModel.seasoningsmenu">
+        <MappingFragment StoreEntitySet="seasoningsmenu">
+          <ScalarProperty Name="seasoningsmenuid" ColumnName="seasoningsmenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="senttransactions">
+      <EntityTypeMapping TypeName="twiliodevModel.senttransaction">
+        <MappingFragment StoreEntitySet="senttransactions">
+          <ScalarProperty Name="senttransactionid" ColumnName="senttransactionid" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="msgsentfor" ColumnName="msgsentfor" />
+          <ScalarProperty Name="msgsent" ColumnName="msgsent" />
+          <ScalarProperty Name="datetimesent" ColumnName="datetimesent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sidesmenus">
+      <EntityTypeMapping TypeName="twiliodevModel.sidesmenu">
+        <MappingFragment StoreEntitySet="sidesmenu">
+          <ScalarProperty Name="sidesmenuid" ColumnName="sidesmenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="smsblasts">
+      <EntityTypeMapping TypeName="twiliodevModel.smsblast">
+        <MappingFragment StoreEntitySet="smsblast">
+          <ScalarProperty Name="blastid" ColumnName="blastid" />
+          <ScalarProperty Name="recordid" ColumnName="recordid" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="recorddate" ColumnName="recorddate" />
+          <ScalarProperty Name="participatingfor" ColumnName="participatingfor" />
+          <ScalarProperty Name="breakfastsmssent" ColumnName="breakfastsmssent" />
+          <ScalarProperty Name="breakfastsentdatetime" ColumnName="breakfastsentdatetime" />
+          <ScalarProperty Name="lunchsmssent" ColumnName="lunchsmssent" />
+          <ScalarProperty Name="lunchsentdatetime" ColumnName="lunchsentdatetime" />
+          <ScalarProperty Name="participatelunch" ColumnName="participatelunch" />
+          <ScalarProperty Name="participatebreakfast" ColumnName="participatebreakfast" />
+          <ScalarProperty Name="newregisteration" ColumnName="newregisteration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_user">
+      <EntityTypeMapping TypeName="twiliodevModel.tbl_user">
+        <MappingFragment StoreEntitySet="tbl_user">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transactionstatus">
+      <EntityTypeMapping TypeName="twiliodevModel.transactionstatu">
+        <MappingFragment StoreEntitySet="transactionstatus">
+          <ScalarProperty Name="transactionstatusid" ColumnName="transactionstatusid" />
+          <ScalarProperty Name="transactionid" ColumnName="transactionid" />
+          <ScalarProperty Name="transactionfor" ColumnName="transactionfor" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="statusdatetime" ColumnName="statusdatetime" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="veggiesmenus">
+      <EntityTypeMapping TypeName="twiliodevModel.veggiesmenu">
+        <MappingFragment StoreEntitySet="veggiesmenu">
+          <ScalarProperty Name="veggiesmenuid" ColumnName="veggiesmenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="bkp_sp_receivedmessages" FunctionName="twiliodevModel.Store.bkp_sp_receivedmessages" />
+    <FunctionImportMapping FunctionImportName="sp_breakfastmessagessend" FunctionName="twiliodevModel.Store.sp_breakfastmessagessend">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_breakfastmessagessend_Result">
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="sentMessage" ColumnName="sentMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_CheckUser" FunctionName="twiliodevModel.Store.Sp_CheckUser" />
+    <FunctionImportMapping FunctionImportName="sp_getfoodmenudetails" FunctionName="twiliodevModel.Store.sp_getfoodmenudetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getfoodmenudetails_Result">
+          <ScalarProperty Name="foodmenuid" ColumnName="foodmenuid" />
+          <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+          <ScalarProperty Name="mealsinterestedin" ColumnName="mealsinterestedin" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getorderstatus" FunctionName="twiliodevModel.Store.sp_getorderstatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getorderstatus_Result">
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ordered" ColumnName="ordered" />
+          <ScalarProperty Name="orderplaced" ColumnName="orderplaced" />
+          <ScalarProperty Name="orderpicked" ColumnName="orderpicked" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getorderstatusinsertrecord" FunctionName="twiliodevModel.Store.sp_getorderstatusinsertrecord" />
+    <FunctionImportMapping FunctionImportName="sp_getorderstatusrecorddetails" FunctionName="twiliodevModel.Store.sp_getorderstatusrecorddetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getorderstatusrecorddetails_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phonenumber" ColumnName="Phonenumber" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Lunchmenu" ColumnName="Lunchmenu" />
+          <ScalarProperty Name="dietaryrestrictions" ColumnName="dietaryrestrictions" />
+          <ScalarProperty Name="breads" ColumnName="breads" />
+          <ScalarProperty Name="cheese" ColumnName="cheese" />
+          <ScalarProperty Name="veggies" ColumnName="veggies" />
+          <ScalarProperty Name="sauces" ColumnName="sauces" />
+          <ScalarProperty Name="seasonings" ColumnName="seasonings" />
+          <ScalarProperty Name="drinks" ColumnName="drinks" />
+          <ScalarProperty Name="sides" ColumnName="sides" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getorderstatusrecordlogdetails" FunctionName="twiliodevModel.Store.sp_getorderstatusrecordlogdetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getorderstatusrecordlogdetails_Result">
+          <ScalarProperty Name="statusdatetime" ColumnName="statusdatetime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getorderstatustotals" FunctionName="twiliodevModel.Store.sp_getorderstatustotals">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getorderstatustotals_Result">
+          <ScalarProperty Name="NoofSMSMessage" ColumnName="NoofSMSMessage" />
+          <ScalarProperty Name="NoofOrdersReceived" ColumnName="NoofOrdersReceived" />
+          <ScalarProperty Name="NoofOrdersPlaced" ColumnName="NoofOrdersPlaced" />
+          <ScalarProperty Name="NoofOrdersPickedup" ColumnName="NoofOrdersPickedup" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getparticipatingindividuals" FunctionName="twiliodevModel.Store.sp_getparticipatingindividuals">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getparticipatingindividuals_Result">
+          <ScalarProperty Name="recordid" ColumnName="recordid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="mealsinterestedin" ColumnName="mealsinterestedin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getparticipatinglocations" FunctionName="twiliodevModel.Store.sp_getparticipatinglocations">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getparticipatinglocations_Result">
+          <ScalarProperty Name="locationid" ColumnName="locationid" />
+          <ScalarProperty Name="locationaddress" ColumnName="locationaddress" />
+          <ScalarProperty Name="mealsinterestedin" ColumnName="mealsinterestedin" />
+          <ScalarProperty Name="displayorder" ColumnName="displayorder" />
+          <ScalarProperty Name="choice" ColumnName="choice" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getuserdetails" FunctionName="twiliodevModel.Store.sp_getuserdetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getuserdetails_Result">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getuserlist" FunctionName="twiliodevModel.Store.sp_getuserlist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_getuserlist_Result">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_insertblast" FunctionName="twiliodevModel.Store.sp_insertblast" />
+    <FunctionImportMapping FunctionImportName="sp_insertupdatefoodmenudetails" FunctionName="twiliodevModel.Store.sp_insertupdatefoodmenudetails" />
+    <FunctionImportMapping FunctionImportName="sp_insertupdatepartipatinglocations" FunctionName="twiliodevModel.Store.sp_insertupdatepartipatinglocations" />
+    <FunctionImportMapping FunctionImportName="sp_insertupdateuserlist" FunctionName="twiliodevModel.Store.sp_insertupdateuserlist" />
+    <FunctionImportMapping FunctionImportName="sp_insnewregnphone" FunctionName="twiliodevModel.Store.sp_insnewregnphone" />
+    <FunctionImportMapping FunctionImportName="sp_logsenttransactions" FunctionName="twiliodevModel.Store.sp_logsenttransactions" />
+    <FunctionImportMapping FunctionImportName="sp_lunchmessagessend" FunctionName="twiliodevModel.Store.sp_lunchmessagessend">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_lunchmessagessend_Result">
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="sentMessage" ColumnName="sentMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_messagessend" FunctionName="twiliodevModel.Store.sp_messagessend">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="twiliodevModel.sp_messagessend_Result">
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="sentMessage" ColumnName="sentMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_receivedmessages" FunctionName="twiliodevModel.Store.sp_receivedmessages" />
+  </EntityContainerMapping>
+</Mapping>

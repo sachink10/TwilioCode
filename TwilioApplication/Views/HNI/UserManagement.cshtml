@@ -1,0 +1,232 @@
+﻿@model TwilioApplication.Models.HNIModel
+
+@{
+    ViewBag.Title = "UserManagement";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- APP MAIN ==========-->
+<main id="app-main" class="app-main">
+  <div class="container">
+    <div class="wrap">
+      <section class="app-content"> 
+      
+      <!-- .row -->
+      
+          <div class="col-md-12">
+            <div class="row">
+              <div class="widget row no-gutter p-lg">
+                <div class="table-responsive">
+                  <table id="example" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th width="6%">Select</th>
+                        <th width="22%">User Name</th>
+                        <th width="31%">First Name (NGO)</th>
+                        <th width="35%">First Name (NGO)</th>
+                        <td width="6%" align="center"><strong>Status</strong></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.getUserList.Count > 0 && Model.getUserList != null)
+                        {
+
+                            foreach (var item in Model.getUserList)
+                            {
+                                
+                           
+                      <tr>
+                        <td align="center" valign="middle"><input  name="select" class="selectradio" type="radio" value="@item.userid"></td>
+                        <td align="left" valign="middle" id="uname">@item.username</td>
+                        <td id="fname">@item.Firstname</td>
+                        <td align="left" valign="middle" lname>@item.lastname</td>
+                            @{string active = @item.status == "A" ? "checked" : string.Empty;}
+                        <td align="center" valign="middle"><input name="select" type="checkbox" id="act" value="@item.status" @active  onclick="return false"></td>
+                      </tr>
+                            }
+                        }
+                    </tbody>
+                  </table>
+                </div>                
+              </div>
+            </div>
+          </div>
+          <!-- .row -->
+          <div class="col-md-12">
+            <div class="row">
+              <div class="widget row no-gutter p-lg">
+              <form role="form" class="form-horizontal">
+    <div class="form-group" style="padding:0 0 5px 0;">
+      <label for="email3" class="control-label col-sm-2">User Name</label>
+      <div class="col-sm-4">
+        <input type="text" placeholder="User Name" id="User-Name" class="form-control input-sm">
+      </div>
+    </div>
+
+          <div class="form-group" style="padding:0 0 5px 0;">
+      <label for="email3" class="control-label col-sm-2">Password</label>
+      <div class="col-sm-4">
+        <input type="password" placeholder="Password" id="Password" class="form-control input-sm">
+      </div>
+    </div>
+    
+    <div class="form-group" style="padding:0 0 5px 0;">
+      <label for="email3" class="control-label col-sm-2">First Name (NGO)</label>
+      <div class="col-sm-4">
+        <input type="text" placeholder="First Name (NGO)" id="First-Name" class="form-control input-sm">
+      </div>
+    </div>
+    
+    <div class="form-group" style="padding:0 0 5px 0;">
+      <label for="email3" class="control-label col-sm-2">Last Name (NGO)</label>
+      <div class="col-sm-4">
+        <input type="text" placeholder="Last Name (NGO)" id="Last-Name" class="form-control input-sm">
+      </div>
+    </div>
+    
+    <div class="form-group" style="padding:0 0 5px 0;">
+      <label for="email3" class="control-label col-sm-2">Email</label>
+      <div class="col-sm-4">
+        <input type="email" placeholder="Email" id="Email" class="form-control input-sm">
+      </div>
+    </div>
+    
+    <div class="form-group" style="padding:0 0 5px 0;">
+      <label for="email3" class="control-label col-sm-2">Active  </label>
+      <div class="col-sm-4">
+        <table cellspacing="0" cellpadding="0" border="0" width="13%">
+  <tbody><tr>
+    <td width="50%"><label>Yes</label><span style="padding:0 5px 0 0; float:left;"><input type="radio" checked=""  id="activeyes" value="A" name="active"></span></td>
+    <td width="50%"><label>No</label><span style="padding:0 5px 0 0; float:left;"><input type="radio" value=""  id="activeno" name="active"></span></td>    
+  </tr>
+</tbody></table>
+      </div>
+    </div>
+        
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary pull-right" type="button" onclick="SaveData()">Submit/Update</button> &nbsp;&nbsp;
+		<button class="btn btn-primary pull-right" type="Clear"  style="margin-right:10px">Clear</button>
+      </div>
+    </div>
+  </form>             
+                
+              </div>
+            </div>
+          </div>
+        
+    
+    </section>
+    <!-- #dash-content --> 
+  </div>
+  
+  <!-- .wrap -->
+   <input type="hidden" value="" id="userid" />
+  </div>
+</main>
+<!--========== END app main -->
+<script>
+
+    $(document).ready(function () {
+        //$(".selectradio").click(function () {
+        //    alert($(this).val());
+        //});
+
+        $(".selectradio").click(function () {
+
+            var row = $(this).parent().parent();
+            var valueOfRadio = $(this).val();
+            $('#userid').val(valueOfRadio);
+
+
+            var uname = row.find('#uname').text();
+
+
+            //var fname = row.find('#fname').text();
+
+            //var lname = row.find('#lname').text();
+            //var act = row.find('#act').val();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getUserDetail", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'userid': valueOfRadio },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data == undefined || data == null) {
+                        alert("Detail is not available for particular user. please contact administrator");
+                        return false;
+                    }
+                    $('#User-Name').val(data.username); $('#Password').val(data.password);
+                    $('#First-Name').val(data.firstname);
+                    $('#Last-Name').val(data.lastname);
+                    $('#Email').val(data.email);
+                    $('#User-Name').prop('readonly', true);
+
+                    if (data.status == "A") {
+                        $('#activeyes').prop('checked', true);
+                    }
+                    else {
+                        $('#activeno').prop('checked', true);
+                    }
+
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+
+
+
+
+        });
+
+
+    });
+
+    function SaveData() {
+        var userid, email, firstname, lastname, status, username,password;
+        // alert('SaveData');
+        userid = $('#userid').val();
+        username = $('#User-Name').val(); password = $('#Password').val();
+        email = $('#Email').val();
+        firstname = $('#First-Name').val();
+        lastname = $('#Last-Name').val();
+        // ordertxt = $('#ordertxt').val();
+
+        status = $("input[type='radio'][name='active']:checked");
+
+        if (username == '' || email == '' || firstname == '') {
+            alert('Please enter username / email /  firstname');
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("insertupdateuserlist", "HNI")',
+            cache: false,
+            dataType: "json",
+            data: { 'userid': userid, 'username': username, 'password': password, 'email': email, 'fname': firstname, 'lname': lastname, 'status': status.val() },
+            //  contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data == true) {
+                    alert("Date Inserted successfully!");
+                    window.location.href = '@Url.Action("UserManagement", "HNI")';
+                }
+                else {
+                    alert("Due to some issue data not inserted into DB. Please contact administrator");
+                }
+            },
+            error: function (result) {
+                alert('Cannot update selection values now!!');
+            }
+        })
+    }
+
+</script>
+

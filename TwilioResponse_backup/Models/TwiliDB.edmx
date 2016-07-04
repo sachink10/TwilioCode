@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TwilioModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TwilioModelStoreContainer">
+          <EntitySet Name="foodmenu" EntityType="TwilioModel.Store.foodmenu" store:Type="Tables" store:Schema="dbo" store:Name="foodmenu">
+            <DefiningQuery>SELECT 
+      [foodmenu].[foodmenuid] AS [foodmenuid], 
+      [foodmenu].[menufor] AS [menufor], 
+      [foodmenu].[choiceofmenu] AS [choiceofmenu], 
+      [foodmenu].[active] AS [active], 
+      [foodmenu].[choice] AS [choice]
+      FROM [dbo].[foodmenu] AS [foodmenu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="participatingindividuals" EntityType="TwilioModel.Store.participatingindividuals" store:Type="Tables" store:Schema="dbo" store:Name="participatingindividuals">
+            <DefiningQuery>SELECT 
+      [participatingindividuals].[recordid] AS [recordid], 
+      [participatingindividuals].[name] AS [name], 
+      [participatingindividuals].[email] AS [email], 
+      [participatingindividuals].[phone] AS [phone], 
+      [participatingindividuals].[pseudonym] AS [pseudonym], 
+      [participatingindividuals].[FoodPreferences] AS [FoodPreferences], 
+      [participatingindividuals].[DietaryRestrictions] AS [DietaryRestrictions], 
+      [participatingindividuals].[createddate] AS [createddate], 
+      [participatingindividuals].[sendphone] AS [sendphone], 
+      [participatingindividuals].[status] AS [status]
+      FROM [dbo].[participatingindividuals] AS [participatingindividuals]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="participatinglocations" EntityType="TwilioModel.Store.participatinglocations" store:Type="Tables" store:Schema="dbo" store:Name="participatinglocations">
+            <DefiningQuery>SELECT 
+      [participatinglocations].[locationid] AS [locationid], 
+      [participatinglocations].[locationaddress] AS [locationaddress], 
+      [participatinglocations].[participatingfor] AS [participatingfor], 
+      [participatinglocations].[active] AS [active], 
+      [participatinglocations].[displayorder] AS [displayorder], 
+      [participatinglocations].[choice] AS [choice]
+      FROM [dbo].[participatinglocations] AS [participatinglocations]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="receivedtransactions" EntityType="TwilioModel.Store.receivedtransactions" store:Type="Tables" store:Schema="dbo" store:Name="receivedtransactions">
+            <DefiningQuery>SELECT 
+      [receivedtransactions].[receivedtransactionid] AS [receivedtransactionid], 
+      [receivedtransactions].[phone] AS [phone], 
+      [receivedtransactions].[Responsereceived] AS [Responsereceived], 
+      [receivedtransactions].[datetimereceived] AS [datetimereceived]
+      FROM [dbo].[receivedtransactions] AS [receivedtransactions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="senttransactions" EntityType="TwilioModel.Store.senttransactions" store:Type="Tables" store:Schema="dbo" store:Name="senttransactions">
+            <DefiningQuery>SELECT 
+      [senttransactions].[senttransactionid] AS [senttransactionid], 
+      [senttransactions].[phone] AS [phone], 
+      [senttransactions].[msgsentfor] AS [msgsentfor], 
+      [senttransactions].[msgsent] AS [msgsent], 
+      [senttransactions].[datetimesent] AS [datetimesent]
+      FROM [dbo].[senttransactions] AS [senttransactions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_user" EntityType="TwilioModel.Store.tbl_user" store:Type="Tables" store:Schema="dbo" store:Name="tbl_user">
+            <DefiningQuery>SELECT 
+      [tbl_user].[userid] AS [userid], 
+      [tbl_user].[username] AS [username], 
+      [tbl_user].[Password] AS [Password], 
+      [tbl_user].[firstname] AS [firstname], 
+      [tbl_user].[lastname] AS [lastname], 
+      [tbl_user].[email] AS [email], 
+      [tbl_user].[status] AS [status], 
+      [tbl_user].[Createddate] AS [Createddate], 
+      [tbl_user].[CreatedBy] AS [CreatedBy]
+      FROM [dbo].[tbl_user] AS [tbl_user]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="transactionstatus" EntityType="TwilioModel.Store.transactionstatus" store:Type="Tables" store:Schema="dbo" store:Name="transactionstatus">
+            <DefiningQuery>SELECT 
+      [transactionstatus].[transactionstatusid] AS [transactionstatusid], 
+      [transactionstatus].[transactionid] AS [transactionid], 
+      [transactionstatus].[transactionfor] AS [transactionfor], 
+      [transactionstatus].[status] AS [status], 
+      [transactionstatus].[phone] AS [phone], 
+      [transactionstatus].[statusdatetime] AS [statusdatetime]
+      FROM [dbo].[transactionstatus] AS [transactionstatus]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.foodmenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="foodmenu">
+          <Key>
+            <PropertyRef Name="foodmenuid" />
+            <PropertyRef Name="menufor" />
+          </Key>
+          <Property Name="foodmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="menufor" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+          <Property Name="choice" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.participatingindividuals' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="participatingindividuals">
+          <Key>
+            <PropertyRef Name="recordid" />
+          </Key>
+          <Property Name="recordid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="12" />
+          <Property Name="pseudonym" Type="varchar(max)" />
+          <Property Name="FoodPreferences" Type="varchar(max)" />
+          <Property Name="DietaryRestrictions" Type="varchar(max)" />
+          <Property Name="createddate" Type="datetime" />
+          <Property Name="sendphone" Type="varchar" MaxLength="10" />
+          <Property Name="status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.participatinglocations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="participatinglocations">
+          <Key>
+            <PropertyRef Name="locationid" />
+            <PropertyRef Name="locationaddress" />
+            <PropertyRef Name="participatingfor" />
+            <PropertyRef Name="active" />
+          </Key>
+          <Property Name="locationid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="locationaddress" Type="varchar(max)" Nullable="false" />
+          <Property Name="participatingfor" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="active" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="displayorder" Type="int" />
+          <Property Name="choice" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.receivedtransactions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="receivedtransactions">
+          <Key>
+            <PropertyRef Name="receivedtransactionid" />
+          </Key>
+          <Property Name="receivedtransactionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="varchar" MaxLength="13" />
+          <Property Name="Responsereceived" Type="varchar" MaxLength="20" />
+          <Property Name="datetimereceived" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.senttransactions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="senttransactions">
+          <Key>
+            <PropertyRef Name="senttransactionid" />
+            <PropertyRef Name="msgsentfor" />
+          </Key>
+          <Property Name="senttransactionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="varchar" MaxLength="13" />
+          <Property Name="msgsentfor" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="msgsent" Type="varchar" MaxLength="160" />
+          <Property Name="datetimesent" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.tbl_user' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="200" />
+          <Property Name="status" Type="varchar" MaxLength="1" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.transactionstatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="transactionstatus">
+          <Key>
+            <PropertyRef Name="transactionstatusid" />
+            <PropertyRef Name="transactionid" />
+          </Key>
+          <Property Name="transactionstatusid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="transactionid" Type="int" Nullable="false" />
+          <Property Name="transactionfor" Type="varchar" MaxLength="1" />
+          <Property Name="status" Type="varchar" MaxLength="60" />
+          <Property Name="phone" Type="varchar" MaxLength="13" />
+          <Property Name="statusdatetime" Type="datetime" />
+        </EntityType>
+        <Function Name="bkp_sp_receivedmessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="choice" Type="varchar" Mode="In" />
+          <Parameter Name="returnmessage" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_breakfastmessagessend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="InOut" />
+          <Parameter Name="sentmessage" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Sp_CheckUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_logsenttransactions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="msgsentfor" Type="varchar" Mode="In" />
+          <Parameter Name="msgsent" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_lunchmessagessend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="InOut" />
+          <Parameter Name="sentmessage" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_messagessend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="InOut" />
+          <Parameter Name="sentmessage" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_receivedmessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="choice" Type="varchar" Mode="In" />
+          <Parameter Name="returnmessage" Type="varchar(max)" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TwilioModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TwilioEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="foodmenus" EntityType="TwilioModel.foodmenu" />
+          <EntitySet Name="participatingindividuals" EntityType="TwilioModel.participatingindividual" />
+          <EntitySet Name="participatinglocations" EntityType="TwilioModel.participatinglocation" />
+          <EntitySet Name="receivedtransactions" EntityType="TwilioModel.receivedtransaction" />
+          <EntitySet Name="senttransactions" EntityType="TwilioModel.senttransaction" />
+          <EntitySet Name="tbl_user" EntityType="TwilioModel.tbl_user" />
+          <EntitySet Name="transactionstatus" EntityType="TwilioModel.transactionstatu" />
+          <FunctionImport Name="bkp_sp_receivedmessages" ReturnType="Collection(String)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="choice" Mode="In" Type="String" />
+            <Parameter Name="returnmessage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_breakfastmessagessend" ReturnType="Collection(TwilioModel.sp_breakfastmessagessend_Result)">
+            <Parameter Name="phone" Mode="InOut" Type="String" />
+            <Parameter Name="sentmessage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_CheckUser" ReturnType="Collection(Int32)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_logsenttransactions">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="msgsentfor" Mode="In" Type="String" />
+            <Parameter Name="msgsent" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_lunchmessagessend" ReturnType="Collection(TwilioModel.sp_lunchmessagessend_Result)">
+            <Parameter Name="phone" Mode="InOut" Type="String" />
+            <Parameter Name="sentmessage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_messagessend" ReturnType="Collection(TwilioModel.sp_messagessend_Result)">
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="InOut" Type="String" />
+            <Parameter Name="sentmessage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_receivedmessages" ReturnType="Collection(String)">
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="choice" Mode="In" Type="String" />
+            <Parameter Name="returnmessage" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="foodmenu">
+          <Key>
+            <PropertyRef Name="foodmenuid" />
+            <PropertyRef Name="menufor" />
+          </Key>
+          <Property Name="foodmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="menufor" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+          <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="choice" Type="Int32" />
+        </EntityType>
+        <EntityType Name="participatingindividual">
+          <Key>
+            <PropertyRef Name="recordid" />
+          </Key>
+          <Property Name="recordid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="pseudonym" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="FoodPreferences" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="DietaryRestrictions" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="createddate" Type="DateTime" Precision="3" />
+          <Property Name="sendphone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="participatinglocation">
+          <Key>
+            <PropertyRef Name="locationid" />
+            <PropertyRef Name="locationaddress" />
+            <PropertyRef Name="participatingfor" />
+            <PropertyRef Name="active" />
+          </Key>
+          <Property Name="locationid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="locationaddress" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="participatingfor" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="active" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="displayorder" Type="Int32" />
+          <Property Name="choice" Type="Int32" />
+        </EntityType>
+        <EntityType Name="receivedtransaction">
+          <Key>
+            <PropertyRef Name="receivedtransactionid" />
+          </Key>
+          <Property Name="receivedtransactionid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+          <Property Name="Responsereceived" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="datetimereceived" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="senttransaction">
+          <Key>
+            <PropertyRef Name="senttransactionid" />
+            <PropertyRef Name="msgsentfor" />
+          </Key>
+          <Property Name="senttransactionid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+          <Property Name="msgsentfor" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="msgsent" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+          <Property Name="datetimesent" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="firstname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="transactionstatu">
+          <Key>
+            <PropertyRef Name="transactionstatusid" />
+            <PropertyRef Name="transactionid" />
+          </Key>
+          <Property Name="transactionstatusid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="transactionid" Type="Int32" Nullable="false" />
+          <Property Name="transactionfor" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+          <Property Name="statusdatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="sp_breakfastmessagessend_Result">
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="sentMessage" Nullable="false" MaxLength="148" />
+        </ComplexType>
+        <ComplexType Name="sp_lunchmessagessend_Result">
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="sentMessage" Nullable="false" MaxLength="152" />
+        </ComplexType>
+        <ComplexType Name="sp_messagessend_Result">
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="sentMessage" Nullable="false" MaxLength="148" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TwilioModelStoreContainer" CdmEntityContainer="TwilioEntities">
+          <EntitySetMapping Name="foodmenus">
+            <EntityTypeMapping TypeName="TwilioModel.foodmenu">
+              <MappingFragment StoreEntitySet="foodmenu">
+                <ScalarProperty Name="foodmenuid" ColumnName="foodmenuid" />
+                <ScalarProperty Name="menufor" ColumnName="menufor" />
+                <ScalarProperty Name="choiceofmenu" ColumnName="choiceofmenu" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="choice" ColumnName="choice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="participatingindividuals">
+            <EntityTypeMapping TypeName="TwilioModel.participatingindividual">
+              <MappingFragment StoreEntitySet="participatingindividuals">
+                <ScalarProperty Name="recordid" ColumnName="recordid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="pseudonym" ColumnName="pseudonym" />
+                <ScalarProperty Name="FoodPreferences" ColumnName="FoodPreferences" />
+                <ScalarProperty Name="DietaryRestrictions" ColumnName="DietaryRestrictions" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+                <ScalarProperty Name="sendphone" ColumnName="sendphone" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="participatinglocations">
+            <EntityTypeMapping TypeName="TwilioModel.participatinglocation">
+              <MappingFragment StoreEntitySet="participatinglocations">
+                <ScalarProperty Name="locationid" ColumnName="locationid" />
+                <ScalarProperty Name="locationaddress" ColumnName="locationaddress" />
+                <ScalarProperty Name="participatingfor" ColumnName="participatingfor" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="displayorder" ColumnName="displayorder" />
+                <ScalarProperty Name="choice" ColumnName="choice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receivedtransactions">
+            <EntityTypeMapping TypeName="TwilioModel.receivedtransaction">
+              <MappingFragment StoreEntitySet="receivedtransactions">
+                <ScalarProperty Name="receivedtransactionid" ColumnName="receivedtransactionid" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Responsereceived" ColumnName="Responsereceived" />
+                <ScalarProperty Name="datetimereceived" ColumnName="datetimereceived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="senttransactions">
+            <EntityTypeMapping TypeName="TwilioModel.senttransaction">
+              <MappingFragment StoreEntitySet="senttransactions">
+                <ScalarProperty Name="senttransactionid" ColumnName="senttransactionid" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="msgsentfor" ColumnName="msgsentfor" />
+                <ScalarProperty Name="msgsent" ColumnName="msgsent" />
+                <ScalarProperty Name="datetimesent" ColumnName="datetimesent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user">
+            <EntityTypeMapping TypeName="TwilioModel.tbl_user">
+              <MappingFragment StoreEntitySet="tbl_user">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transactionstatus">
+            <EntityTypeMapping TypeName="TwilioModel.transactionstatu">
+              <MappingFragment StoreEntitySet="transactionstatus">
+                <ScalarProperty Name="transactionstatusid" ColumnName="transactionstatusid" />
+                <ScalarProperty Name="transactionid" ColumnName="transactionid" />
+                <ScalarProperty Name="transactionfor" ColumnName="transactionfor" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="statusdatetime" ColumnName="statusdatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="bkp_sp_receivedmessages" FunctionName="TwilioModel.Store.bkp_sp_receivedmessages" />
+          <FunctionImportMapping FunctionImportName="sp_breakfastmessagessend" FunctionName="TwilioModel.Store.sp_breakfastmessagessend">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TwilioModel.sp_breakfastmessagessend_Result">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="sentMessage" ColumnName="sentMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_CheckUser" FunctionName="TwilioModel.Store.Sp_CheckUser" />
+          <FunctionImportMapping FunctionImportName="sp_logsenttransactions" FunctionName="TwilioModel.Store.sp_logsenttransactions" />
+          <FunctionImportMapping FunctionImportName="sp_lunchmessagessend" FunctionName="TwilioModel.Store.sp_lunchmessagessend">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TwilioModel.sp_lunchmessagessend_Result">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="sentMessage" ColumnName="sentMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_messagessend" FunctionName="TwilioModel.Store.sp_messagessend">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TwilioModel.sp_messagessend_Result">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="sentMessage" ColumnName="sentMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_receivedmessages" FunctionName="TwilioModel.Store.sp_receivedmessages" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

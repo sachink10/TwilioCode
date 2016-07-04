@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="twiliodevModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="twilioEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="breads" EntityType="twiliodevModel.bread" />
+    <EntitySet Name="cheesemenus" EntityType="twiliodevModel.cheesemenu" />
+    <EntitySet Name="dietaryrestsrictions" EntityType="twiliodevModel.dietaryrestsriction" />
+    <EntitySet Name="drinksmenus" EntityType="twiliodevModel.drinksmenu" />
+    <EntitySet Name="foodmenus" EntityType="twiliodevModel.foodmenu" />
+    <EntitySet Name="lunchmenus" EntityType="twiliodevModel.lunchmenu" />
+    <EntitySet Name="NewRegistrations" EntityType="twiliodevModel.NewRegistration" />
+    <EntitySet Name="NewRegnentries" EntityType="twiliodevModel.NewRegnentry" />
+    <EntitySet Name="participatingindividuals" EntityType="twiliodevModel.participatingindividual" />
+    <EntitySet Name="participatinglocations" EntityType="twiliodevModel.participatinglocation" />
+    <EntitySet Name="receivedtransactions" EntityType="twiliodevModel.receivedtransaction" />
+    <EntitySet Name="saucesmenus" EntityType="twiliodevModel.saucesmenu" />
+    <EntitySet Name="seasoningsmenus" EntityType="twiliodevModel.seasoningsmenu" />
+    <EntitySet Name="senttransactions" EntityType="twiliodevModel.senttransaction" />
+    <EntitySet Name="sidesmenus" EntityType="twiliodevModel.sidesmenu" />
+    <EntitySet Name="smsblasts" EntityType="twiliodevModel.smsblast" />
+    <EntitySet Name="tbl_user" EntityType="twiliodevModel.tbl_user" />
+    <EntitySet Name="transactionstatus" EntityType="twiliodevModel.transactionstatu" />
+    <EntitySet Name="veggiesmenus" EntityType="twiliodevModel.veggiesmenu" />
+    <FunctionImport Name="bkp_sp_receivedmessages" ReturnType="Collection(String)">
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="choice" Mode="In" Type="String" />
+      <Parameter Name="returnmessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_breakfastmessagessend" ReturnType="Collection(twiliodevModel.sp_breakfastmessagessend_Result)">
+      <Parameter Name="phone" Mode="InOut" Type="String" />
+      <Parameter Name="sentmessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CheckUser" ReturnType="Collection(Int32)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getfoodmenudetails" ReturnType="Collection(twiliodevModel.sp_getfoodmenudetails_Result)" />
+    <FunctionImport Name="sp_getorderstatus" ReturnType="Collection(twiliodevModel.sp_getorderstatus_Result)">
+      <Parameter Name="transtype" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getorderstatusinsertrecord">
+      <Parameter Name="phonenumber" Mode="In" Type="String" />
+      <Parameter Name="trantype" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getorderstatusrecorddetails" ReturnType="Collection(twiliodevModel.sp_getorderstatusrecorddetails_Result)">
+      <Parameter Name="phonenumber" Mode="In" Type="String" />
+      <Parameter Name="transtype" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getorderstatusrecordlogdetails" ReturnType="Collection(twiliodevModel.sp_getorderstatusrecordlogdetails_Result)">
+      <Parameter Name="phonenumber" Mode="In" Type="String" />
+      <Parameter Name="transtype" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getorderstatustotals" ReturnType="Collection(twiliodevModel.sp_getorderstatustotals_Result)">
+      <Parameter Name="trantype" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getparticipatingindividuals" ReturnType="Collection(twiliodevModel.sp_getparticipatingindividuals_Result)" />
+    <FunctionImport Name="sp_getparticipatinglocations" ReturnType="Collection(twiliodevModel.sp_getparticipatinglocations_Result)" />
+    <FunctionImport Name="sp_getuserdetails" ReturnType="Collection(twiliodevModel.sp_getuserdetails_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getuserlist" ReturnType="Collection(twiliodevModel.sp_getuserlist_Result)" />
+    <FunctionImport Name="sp_insertblast">
+      <Parameter Name="recordid" Mode="In" Type="Int32" />
+      <Parameter Name="phonenumber" Mode="In" Type="String" />
+      <Parameter Name="participatingfor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insertupdatefoodmenudetails" ReturnType="Collection(Int32)">
+      <Parameter Name="foodmenuid" Mode="In" Type="Int32" />
+      <Parameter Name="menufor" Mode="In" Type="String" />
+      <Parameter Name="choiceofmenu" Mode="In" Type="String" />
+      <Parameter Name="active" Mode="In" Type="String" />
+      <Parameter Name="choice" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insertupdatepartipatinglocations">
+      <Parameter Name="locationid" Mode="In" Type="Int32" />
+      <Parameter Name="locationaddress" Mode="In" Type="String" />
+      <Parameter Name="participatingfor" Mode="In" Type="String" />
+      <Parameter Name="displayorder" Mode="In" Type="Int32" />
+      <Parameter Name="choice" Mode="In" Type="Int32" />
+      <Parameter Name="active" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insertupdateuserlist" ReturnType="Collection(Int32)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insnewregnphone">
+      <Parameter Name="phonenumbers" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_logsenttransactions">
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="msgsentfor" Mode="In" Type="String" />
+      <Parameter Name="msgsent" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_lunchmessagessend" ReturnType="Collection(twiliodevModel.sp_lunchmessagessend_Result)">
+      <Parameter Name="phone" Mode="InOut" Type="String" />
+      <Parameter Name="sentmessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_messagessend" ReturnType="Collection(twiliodevModel.sp_messagessend_Result)">
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="InOut" Type="String" />
+      <Parameter Name="sentmessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_receivedmessages" ReturnType="Collection(String)">
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="choice" Mode="In" Type="String" />
+      <Parameter Name="returnmessage" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="bread">
+    <Key>
+      <PropertyRef Name="breadmenuid" />
+    </Key>
+    <Property Name="breadmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="cheesemenu">
+    <Key>
+      <PropertyRef Name="cheesemenuid" />
+    </Key>
+    <Property Name="cheesemenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="dietaryrestsriction">
+    <Key>
+      <PropertyRef Name="restrictid" />
+    </Key>
+    <Property Name="restrictid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="menufor" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="drinksmenu">
+    <Key>
+      <PropertyRef Name="drinksmenuid" />
+    </Key>
+    <Property Name="drinksmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="foodmenu">
+    <Key>
+      <PropertyRef Name="foodmenuid" />
+      <PropertyRef Name="menufor" />
+    </Key>
+    <Property Name="foodmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="menufor" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="lunchmenu">
+    <Key>
+      <PropertyRef Name="lunchmenuid" />
+    </Key>
+    <Property Name="lunchmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="NewRegistration">
+    <Key>
+      <PropertyRef Name="phid" />
+    </Key>
+    <Property Name="Phonenumber" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <Property Name="phid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="NewRegnentry">
+    <Key>
+      <PropertyRef Name="regnid" />
+    </Key>
+    <Property Name="regnid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Phonenumbers" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="participatingindividual">
+    <Key>
+      <PropertyRef Name="recordid" />
+    </Key>
+    <Property Name="recordid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="phone" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="pseudonym" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="FoodPreferences" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="DietaryRestrictions" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="createddate" Type="DateTime" Precision="3" />
+    <Property Name="sendphone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="status" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="participatingfor" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="bread" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="cheese" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="veggies" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="sauces" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Seasonings" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="drinks" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="sides" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="lunchmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="participatinglocation">
+    <Key>
+      <PropertyRef Name="locationid" />
+      <PropertyRef Name="locationaddress" />
+      <PropertyRef Name="participatingfor" />
+      <PropertyRef Name="active" />
+    </Key>
+    <Property Name="locationid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="locationaddress" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="participatingfor" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="displayorder" Type="Int32" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="receivedtransaction">
+    <Key>
+      <PropertyRef Name="receivedtransactionid" />
+    </Key>
+    <Property Name="receivedtransactionid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="Responsereceived" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="datetimereceived" Type="DateTime" Precision="3" />
+    <Property Name="transactionfor" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="actualtransaction" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="saucesmenu">
+    <Key>
+      <PropertyRef Name="saucesmenuid" />
+    </Key>
+    <Property Name="saucesmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="seasoningsmenu">
+    <Key>
+      <PropertyRef Name="seasoningsmenuid" />
+    </Key>
+    <Property Name="seasoningsmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="senttransaction">
+    <Key>
+      <PropertyRef Name="senttransactionid" />
+      <PropertyRef Name="msgsentfor" />
+    </Key>
+    <Property Name="senttransactionid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="msgsentfor" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="msgsent" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="datetimesent" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sidesmenu">
+    <Key>
+      <PropertyRef Name="sidesmenuid" />
+    </Key>
+    <Property Name="sidesmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <EntityType Name="smsblast">
+    <Key>
+      <PropertyRef Name="blastid" />
+    </Key>
+    <Property Name="blastid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="recordid" Type="Int32" />
+    <Property Name="phonenumber" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="recorddate" Type="DateTime" Precision="3" />
+    <Property Name="participatingfor" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="breakfastsmssent" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="breakfastsentdatetime" Type="DateTime" Precision="3" />
+    <Property Name="lunchsmssent" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="lunchsentdatetime" Type="DateTime" Precision="3" />
+    <Property Name="participatelunch" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="participatebreakfast" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="newregisteration" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="firstname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="lastname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="status" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="Createddate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="transactionstatu">
+    <Key>
+      <PropertyRef Name="transactionstatusid" />
+      <PropertyRef Name="transactionid" />
+    </Key>
+    <Property Name="transactionstatusid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="transactionid" Type="Int32" Nullable="false" />
+    <Property Name="transactionfor" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="status" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="phone" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="statusdatetime" Type="DateTime" Precision="3" />
+    <Property Name="username" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="veggiesmenu">
+    <Key>
+      <PropertyRef Name="veggiesmenuid" />
+    </Key>
+    <Property Name="veggiesmenuid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="choice" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="sp_breakfastmessagessend_Result">
+    <Property Type="String" Name="phone" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="sentMessage" Nullable="false" MaxLength="148" />
+  </ComplexType>
+  <ComplexType Name="sp_getfoodmenudetails_Result">
+    <Property Type="Int32" Name="foodmenuid" Nullable="false" />
+    <Property Type="String" Name="choiceofmenu" Nullable="true" MaxLength="160" />
+    <Property Type="String" Name="mealsinterestedin" Nullable="true" MaxLength="9" />
+    <Property Type="Int32" Name="choice" Nullable="true" />
+    <Property Type="String" Name="active" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="sp_getorderstatus_Result">
+    <Property Type="String" Name="phone" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ordered" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="orderplaced" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="orderpicked" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="sp_getorderstatusrecorddetails_Result">
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Phonenumber" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="Location" Nullable="true" />
+    <Property Type="String" Name="Lunchmenu" Nullable="true" MaxLength="160" />
+    <Property Type="String" Name="dietaryrestrictions" Nullable="false" />
+    <Property Type="String" Name="breads" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="cheese" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="veggies" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="sauces" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="seasonings" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="drinks" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="sides" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="sp_getorderstatusrecordlogdetails_Result">
+    <Property Type="DateTime" Name="statusdatetime" Nullable="true" Precision="23" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="sp_getorderstatustotals_Result">
+    <Property Type="Int32" Name="NoofSMSMessage" Nullable="true" />
+    <Property Type="Int32" Name="NoofOrdersReceived" Nullable="true" />
+    <Property Type="Int32" Name="NoofOrdersPlaced" Nullable="true" />
+    <Property Type="Int32" Name="NoofOrdersPickedup" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_getparticipatingindividuals_Result">
+    <Property Type="Int32" Name="recordid" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="phonenumber" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="mealsinterestedin" Nullable="true" MaxLength="9" />
+  </ComplexType>
+  <ComplexType Name="sp_getparticipatinglocations_Result">
+    <Property Type="Int32" Name="locationid" Nullable="false" />
+    <Property Type="String" Name="locationaddress" Nullable="false" />
+    <Property Type="String" Name="mealsinterestedin" Nullable="true" MaxLength="9" />
+    <Property Type="Int32" Name="displayorder" Nullable="true" />
+    <Property Type="Int32" Name="choice" Nullable="true" />
+    <Property Type="String" Name="active" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="sp_getuserdetails_Result">
+    <Property Type="String" Name="username" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="password" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="firstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="sp_getuserlist_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Firstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="sp_lunchmessagessend_Result">
+    <Property Type="String" Name="phone" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="sentMessage" Nullable="false" MaxLength="152" />
+  </ComplexType>
+  <ComplexType Name="sp_messagessend_Result">
+    <Property Type="String" Name="phone" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="sentMessage" Nullable="false" MaxLength="148" />
+  </ComplexType>
+</Schema>

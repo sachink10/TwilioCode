@@ -1,0 +1,13 @@
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\TwilioPOCApp.dll
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\TwilioPOCApp.pdb
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\RestSharp.dll
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\Twilio.Api.dll
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\Twilio.Twiml.dll
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\RestSharp.xml
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\Twilio.Api.pdb
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\Twilio.Api.xml
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\Twilio.Twiml.pdb
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\bin\Twilio.Twiml.xml
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\obj\Debug\TwilioPOCApp.csprojResolveAssemblyReference.cache
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\obj\Debug\TwilioPOCApp.dll
+C:\CRM\Twillio\TwilioPOC\TwilioPOCApp\TwilioPOCApp\obj\Debug\TwilioPOCApp.pdb

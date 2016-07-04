@@ -1,0 +1,241 @@
+﻿@model TwilioApplication.Models.HNIModel
+
+@{
+    ViewBag.Title = "Participants";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+
+
+<!-- APP MAIN ==========-->
+<main id="app-main" class="app-main">
+  <div class="container">
+    <div class="wrap">
+      <section class="app-content"> 
+      
+      <!-- .row -->
+      
+          <div class="col-md-12">
+            <div class="row">
+              <div class="widget row no-gutter p-lg">
+                <div class="table-responsive">
+                  <table id="example" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th width="5%">Select</th>
+                        <th width="9%">Phone</th>
+                        <th width="86%">Pseudonym</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td align="center" valign="middle"><input checked name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3108552415</td>
+                        <td>Erika Suhr</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3233388067</td>
+                        <td>Kristin steiger</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3233388067</td>
+                        <td>Kristin steiger</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">&nbsp;</td>
+                        <td>David_cx5</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">7195053247</td>
+                        <td>Audrey</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3104093111</td>
+                        <td>Amber Coniglio</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">8727313084</td>
+                        <td>Sammie</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">8727313084</td>
+                        <td>Jay</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle"></td>
+                        <td>Tyler sandford</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3106961004</td>
+                        <td>Tyler </td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3233311939</td>
+                        <td>erik pineda</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3238268382</td>
+                        <td>David Alan Killian</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">7735403611</td>
+                        <td>Ryan sher</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3234892222</td>
+                        <td>Sarah Buso</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3107456392</td>
+                        <td>Natalie Houston </td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3107456392</td>
+                        <td>Natalie Houston </td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3145506509</td>
+                        <td>Phillip wheelington</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3106961004</td>
+                        <td>Tyler sandford</td>
+                      </tr>
+                      <tr>
+                        <td align="center" valign="middle"><input name="select" type="checkbox" value=""></td>
+                        <td align="left" valign="middle">3106961004</td>
+                        <td>Tyler sandford</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>                
+              </div>
+            </div>
+          </div>
+          <!-- .row -->
+          <div class="col-md-12">
+            <div class="row">
+              <div class="widget row no-gutter p-lg">
+                    <div class="border-box clearfix">
+                      <div class="col-md-6">
+                        <div class="col-md-12">
+                          <div class="heading-box">&nbsp;</div>
+                        </div>
+                        <div class="form-horizontal form-horizontal-left">
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Name <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Erika Suhr</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Phone <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">3108552415</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Location <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">&nbsp;</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Breakfast Menu <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Black Forest Ham</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Dietary Restrictions <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">None</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-horizontal form-horizontal-left">
+                          <div class="col-md-12">
+                            <div class="heading-box"><strong>Preferences</strong></div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Breads <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Wheat (9-Grain)</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Cheese <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Swiss</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Veggies <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Lettuce</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Sauces <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Mayonnaise</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Seasonings <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Pepper</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Drinks <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Bottled Water</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Sides <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static">Sun Chips</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>   
+                    
+                    <div class="form-group">        
+      <div class="col-sm-12" style="margin-top:10px;">
+        <button class="btn btn-primary pull-right" type="button">Submit/Update</button>
+      </div>
+    </div>                                 
+              </div>
+            </div>
+          </div>       
+    
+    </section>
+    <!-- #dash-content --> 
+  </div>
+  
+  <!-- .wrap -->
+  
+  </div>
+</main>
+<!--========== END app main -->

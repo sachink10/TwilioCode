@@ -1,0 +1,112 @@
+﻿@model TwilioApplication.Models.HNIModel
+
+@{
+    ViewBag.Title = "Send Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<div class="container">
+    <div class="row">
+        <h4 style="padding: 10px 0;"><strong>Send Messages</strong></h4>
+        <div class="table-responsive">
+            <table id="example" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th width="6%">Select</th>
+                        <th width="52%">Full Name or Pseudonym (Nick Name)</th>
+                        <th width="14%">Phone Number</th>
+                        <th width="28%">Participating in (Breakfast/Lunch/Both)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.getParticipateIndividual)
+                    {
+                        
+                   
+                        <tr>
+                            <td align="center" valign="middle">
+                                <input name="select" type="checkbox" value="@item.recordid"></td>
+                            <td>@item.name</td>
+                            <td>@item.phonenumber</td>
+                            <td align="center" valign="middle">
+                                <select class="form-control input-sm">
+                                    @switch (@item.mealsinterestedin)
+                                    {
+                                        case "Both":
+                                        <option>Breakfast</option>
+                                        <option>Lunch</option>
+                                        <option selected>Both</option>
+                                            break;
+                                        case "Breakfast":
+                                        <option selected>Breakfast</option>
+                                        <option>Lunch</option>
+                                        <option>Both</option>
+                                            break;
+                                        case "Lunch":
+                                        <option>Breakfast</option>
+                                        <option selected>Lunch</option>
+                                        <option>Both</option>
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                </select></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix pull-right">
+            <button type="Submit" class="form-control btn-primary col-md-4" onclick="Savedata()">Save</button>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    function Savedata() {
+        var recordid = new Array();
+
+
+        $('#example').find('input[type="checkbox"]:checked').each(function () {
+            //this is the current checkbox
+            //alert($(this).val());
+            recordid.push($(this).val().toString());
+            
+        });
+
+        if (recordid.length == 0) {
+            alert("Please select the item first");
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpdateSendMessage", "HNI")',
+                    cache: false,
+                    dataType: "json",
+                    data: JSON.stringify(recordid),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data == true) {
+                            alert("Record successfully updated");
+                            window.location.href = '@Url.Action("SendMessage", "HNI")';
+                        }
+                        else {
+                            alert("Due to some reason record not updated. Please contact administrator!!");
+                        }
+                       
+                    },
+                    error: function (result) {
+                        alert('Cannot update selection values now!!');
+                    }
+         })
+
+    }
+
+</script>
+
+

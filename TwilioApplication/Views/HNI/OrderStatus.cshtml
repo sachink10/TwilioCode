@@ -1,0 +1,459 @@
+﻿@model TwilioApplication.Models.HNIModel
+
+@{
+    ViewBag.Title = "Order Status";
+    Layout = "~/Views/Shared/_LayoutNew.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- APP MAIN ==========-->
+<main id="app-main" class="app-main">
+  <div class="container">
+    <div class="wrap">
+      <section class="app-content">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="widget stats-widget">
+            <div class="widget-body clearfix">
+              <div class="col-md-12">
+                <h3 class="widget-title" style="color:#000;"><span class="counter" data-plugin="counterUp">@Model.getOrderStatusTotal[0].NoofSMSMessage.ToString()</span></h3>
+                <small class="text-color">No of SMS Message</small> </div>
+            </div>
+            <footer class="widget-footer" style="background-color:#000;"> 
+            <span class="dynamicbar pull-right">Loading..</span>
+            </footer>
+          </div>
+          <!-- .widget --> 
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="widget stats-widget">
+            <div class="widget-body clearfix">
+              <div class="col-md-12">
+                <h3 class="widget-title text-danger"><span class="counter" data-plugin="counterUp">@Model.getOrderStatusTotal[0].NoofOrdersReceived.ToString()</span></h3>
+                <small class="text-color">No of Orders Received</small> </div>
+            </div>
+            <footer class="widget-footer bg-danger"> <span class="dynamicbar pull-right">Loading..</span> </footer>
+          </div>
+          <!-- .widget --> 
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="widget stats-widget">
+            <div class="widget-body clearfix">
+              <div class="col-md-12">
+                <h3 class="widget-title text-success"><span class="counter" data-plugin="counterUp">@Model.getOrderStatusTotal[0].NoofOrdersPlaced.ToString()</span></h3>
+                <small class="text-color">No of Orders Placed</small> </div>
+            </div>
+            <footer class="widget-footer bg-success"> <span class="dynamicbar pull-right">Loading..</span> </footer>
+          </div>
+          <!-- .widget --> 
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="widget stats-widget">
+            <div class="widget-body clearfix">
+              <div class="col-md-12">
+                <h3 class="widget-title text-warning"><span class="counter" data-plugin="counterUp">@Model.getOrderStatusTotal[0].NoofOrdersPickedup.ToString()</span></h3>
+                <small class="text-color">No of Orders Picked up</small> </div>
+            </div>
+            <footer class="widget-footer bg-warning"> <span class="dynamicbar pull-right">Loading..</span> </footer>
+          </div>
+          <!-- .widget --> 
+        </div>
+      </div>
+      <div class="row" style="padding:15px 0;">
+        <div class="col-md-3 col-md-offset-3">
+          <label for="optDaily" style="color:#fff">
+             @if (Model.OrderstatusType == "B")
+             {
+                    <input name="intervaltype" onclick="LoadBreakfast()" checked type="radio" data-target="#scheduleDaily">
+             }
+             else
+             {
+                    <input name="intervaltype" onclick="LoadBreakfast()" type="radio" data-target="#scheduleDaily">
+             }
+            &nbsp;&nbsp;
+            Breakfast</label>
+        </div>
+        <div class="col-md-2">
+          <label for="optWeekly" style="color:#fff">
+             @if (Model.OrderstatusType == "L")
+             {
+                    <input name="intervaltype" onclick="LoadLunch()" checked type="radio" data-target="#scheduleDaily">
+             }
+             else
+             {
+                    <input name="intervaltype" onclick="LoadLunch()" type="radio" data-target="#scheduleDaily">
+             }
+
+            &nbsp;&nbsp;
+            Lunch</label>
+        </div>
+      </div>
+      
+      <!-- .row -->
+      <div class="tab-content">
+        <div id="scheduleDaily" class="tab-pane active">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="widget row no-gutter p-lg">
+                <div class="table-responsive">
+                  <table id="example" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th width="5%">Select</th>
+                        <th width="8%">Phone</th>
+                        <th width="71%">Pseudonym</th>
+                        <th width="6%">Ordered</th>
+                        <th width="5%">Placed</th>
+                        <th width="5%">Pickup</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.getOrderStatusB.Count > 0 && Model.getOrderStatusB != null)
+                        {
+                            foreach (var item in Model.getOrderStatusB)
+                            {
+                                    <tr>
+                                        <td align="center" valign="middle">
+                                            <input  name="select" type="radio" class="selectradio" value="@item.phone"></td>
+                                        <td align="left" valign="middle">@item.phone</td>
+                                        <td>@item.name</td>
+                                        <td align="center" valign="middle">
+                                            @{string ordered, placed, pickup;
+                                              ordered = item.ordered == "Y" ? "checked" : string.Empty;
+                                              placed = item.orderplaced == "Y" ? "checked" : string.Empty;
+                                              pickup = item.orderpicked == "Y" ? "checked" : string.Empty;
+                                             
+                                            }
+                                            <input name="select" type="checkbox" value="" @ordered  onclick="return false"></td>
+                                        <td align="center" valign="middle">
+                                            <input name="select" id="@item.phone.Replace("+", "")" type="checkbox" value="@item.phone"  @placed disabled></td>
+                                        <td align="center" valign="middle">
+                                            <input name="select" type="checkbox" value=""  @pickup onclick="return false"></td>
+                                    </tr>
+                            }
+                        }
+
+                    </tbody>
+                  </table>
+                </div>
+                <div class="clearfix">
+                
+                <div class="pull-right"><img src="~/assets/images/refresh.png" width="30" height="30" onclick="Refresh()">&nbsp; &nbsp; &nbsp; <img src="~/assets/images/save.png" width="24" height="24" onclick="Savedata()"></div>                 
+                </div>
+              </div>
+              <!-- .widget --> 
+            </div>
+          </div>
+          <!-- .row -->
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="widget row p-lg">
+                    <div class="col-md-8" style="padding-left:0px;">
+                  <div class="border-box clearfix">
+                       <div class="col-md-6">
+                        <div class="col-md-12">
+                          <div class="heading-box">&nbsp;</div>
+                        </div>
+                        <div class="form-horizontal form-horizontal-left">
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Name <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="name"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Phone <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="ph"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Location <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="location"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Breakfast Menu <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="lunch"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Dietary Restrictions <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="Dietary"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-horizontal form-horizontal-left">
+                          <div class="col-md-12">
+                            <div class="heading-box"><strong>Preferences</strong></div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Breads <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="bread"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Cheese <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="cheese"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Veggies <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="veggies"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Sauces <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="sauces"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Seasonings <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="seasonings"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Drinks <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="drinks"></p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-xs-6"><strong>Sides <span class="pull-right">:</span></strong></label>
+                            <div class="col-xs-6">
+                              <p class="form-control-static" id="slides"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                        </div>
+                  <div class="col-md-4" style="padding-right:0px;">
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-striped" id="logTable">
+                        <thead>
+                          <tr>
+                            <th>Log</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                               <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                                  <td>&nbsp;</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                  </div>
+                </div>
+                <!-- .widget --> 
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    
+    </section>
+    <!-- #dash-content --> 
+  </div>
+  
+  <!-- .wrap -->
+  
+  </div>
+ <input type="hidden" id="type" value="@Session["type"].ToString()" />
+<input type="hidden" id="phnumber" value="" />
+<input type="hidden" id="prevchk" value="" />
+</main>
+<!--========== END app main -->
+<script type="text/javascript">
+
+
+
+    function LoadBreakfast() {
+
+        window.location.href = '@Url.Action("OrderStatus", "HNI", new { type = "B" })';
+        $('#type').val("B");
+    }
+
+    function LoadLunch() {
+
+        window.location.href = '@Url.Action("OrderStatus", "HNI", new { type = "L" })';
+        $('#type').val("L");
+
+
+
+    }
+
+    function Refresh() {
+        var type = $('#type').val();
+
+        if (type == "B" || type == "") {
+            window.location.href = '@Url.Action("OrderStatus", "HNI", new { type = "B" })';
+        }
+        else {
+            window.location.href = '@Url.Action("OrderStatus", "HNI", new { type = "L" })';
+        }
+
+    }
+
+    function Savedata() {
+        if (!$('#' + $('#phnumber').val().replace('+', '')).is(":checked")) {
+            alert('Please checked the checked of selected row');
+        }
+        else {
+            var type = $('#type').val();
+            var phonenumber = $('#phnumber').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("insertORderStatus", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'phonenumber': phonenumber, 'type': type },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data == true) {
+                        alert('Record Inserted successfully')
+                    }
+                    else {
+                        alert('Record not inserted into the DB. Please contact administrator!!!')
+                    }
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+        }
+    }
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        //$(".selectradio").click(function () {
+        //    alert($(this).val());
+        //});
+
+        $(".selectradio").click(function () {
+            var $row = $(this).parent().parent();
+            var valueOfRadio = $(this).val();//$('input[name=select]:checked').val();
+
+            if ($('#phnumber').val() == "") {
+                $('#' + valueOfRadio.replace('+', '')).removeAttr("disabled");
+            }
+            if ($('#phnumber').val() != valueOfRadio) {
+                $('#' + $('#phnumber').val().replace('+', '')).attr("disabled", true);
+                $('#' + valueOfRadio.replace('+', '')).removeAttr("disabled");
+            }
+            $('#phnumber').val(valueOfRadio);
+            var type = $('#type').val();
+            // alert(valueOfRadio);
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getOrderselectdetail", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'phonenumber': valueOfRadio, 'type': type },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // alert(data[0].dietaryrestrictions);
+                    $('#name').html(data[0].Name);
+                    $('#ph').html(data[0].Phonenumber);
+                    $('#location').html(data[0].Location);
+                    $('#lunch').html(data[0].Lunchmenu);
+                    $('#Dietary').html(data[0].dietaryrestrictions);
+                    $('#bread').html(data[0].breads);
+                    $('#cheese').html(data[0].cheese);
+                    $('#veggies').html(data[0].veggies);
+                    $('#sauces').html(data[0].sauces);
+                    $('#seasonings').html(data[0].seasonings);
+                    $('#drinks').html(data[0].drinks);
+                    $('#slides').html(data[0].sides);
+                    loadDetail(data[0].Phonenumber);
+                    btnsubmit
+                    $('#btnsubmit').removeAttr("disabled");
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+        });
+        function loadDetail(phonenumber) {
+            var type = $('#type').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getOrderlogdetail", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'phonenumber': phonenumber, 'type': type },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    // alert(data[0].dietaryrestrictions);
+                    $("#logTable").find('tbody').empty();
+                    $("#logTable").append("<tbody />")
+                    for (var i = 0; i < data.length; i++) {
+                        var row = $("<tr />")
+                        // var date = new Date(parseInt(Date.parse(data[i].statusdatetime)));
+                        var parsedDate = new Date(parseInt(data[i].statusdatetime.substr(6)));
+                        var jsDate = new Date(parsedDate);
+
+                        // var d = new data(data[i].statusdatetime)
+                        $("#logTable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+                        row.append($("<td>" + parseInt(i + 1) + "</td>"));
+                        //row.append($("<td>" + data[i].statusdatetime + "</td>"));
+                        row.append($("<td>" + jsDate.getDate() + "/" + jsDate.getMonth() + "/" + jsDate.getFullYear() + " " + jsDate.getHours() + ":" + jsDate.getMinutes() + ":" + jsDate.getSeconds() + "</td>"));
+                        row.append($("<td>" + data[i].status + "</td>"));
+                    }
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+
+        }
+
+        @*$("#chkplaced").click(function () {
+            var type = $('#type').val();
+            var phonenumber = $('#phnumber').val();
+           // alert(phonenumber);
+            if (phonenumber == undefined || phonenumber == "") {
+                alert('Please select the record first'); return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("insertORderStatus", "HNI")',
+                cache: false,
+                dataType: "json",
+                data: { 'phonenumber': phonenumber, 'type': type },
+                //  contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data == true) {
+                        alert('Record Inserted successfully')
+                    }
+                    else {
+                        alert('Record not inserted into the DB. Please contact administrator!!!')
+                    }
+                },
+                error: function (result) {
+                    alert('Cannot update selection values now!!');
+                }
+            })
+        });*@
+
+    });
+</script>

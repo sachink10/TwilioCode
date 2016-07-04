@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="twiliodevModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="twiliodevModelStoreContainer">
+    <EntitySet Name="breads" EntityType="twiliodevModel.Store.breads" store:Type="Tables" store:Schema="dbo" store:Name="breads">
+      <DefiningQuery>SELECT 
+      [breads].[breadmenuid] AS [breadmenuid], 
+      [breads].[choiceofmenu] AS [choiceofmenu], 
+      [breads].[active] AS [active], 
+      [breads].[choice] AS [choice]
+      FROM [dbo].[breads] AS [breads]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="cheesemenu" EntityType="twiliodevModel.Store.cheesemenu" store:Type="Tables" store:Schema="dbo" store:Name="cheesemenu">
+      <DefiningQuery>SELECT 
+      [cheesemenu].[cheesemenuid] AS [cheesemenuid], 
+      [cheesemenu].[choiceofmenu] AS [choiceofmenu], 
+      [cheesemenu].[active] AS [active], 
+      [cheesemenu].[choice] AS [choice]
+      FROM [dbo].[cheesemenu] AS [cheesemenu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="dietaryrestsrictions" EntityType="twiliodevModel.Store.dietaryrestsrictions" store:Type="Tables" store:Schema="dbo" store:Name="dietaryrestsrictions">
+      <DefiningQuery>SELECT 
+      [dietaryrestsrictions].[restrictid] AS [restrictid], 
+      [dietaryrestsrictions].[menufor] AS [menufor], 
+      [dietaryrestsrictions].[choiceofmenu] AS [choiceofmenu], 
+      [dietaryrestsrictions].[active] AS [active], 
+      [dietaryrestsrictions].[choice] AS [choice]
+      FROM [dbo].[dietaryrestsrictions] AS [dietaryrestsrictions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="drinksmenu" EntityType="twiliodevModel.Store.drinksmenu" store:Type="Tables" store:Schema="dbo" store:Name="drinksmenu">
+      <DefiningQuery>SELECT 
+      [drinksmenu].[drinksmenuid] AS [drinksmenuid], 
+      [drinksmenu].[choiceofmenu] AS [choiceofmenu], 
+      [drinksmenu].[active] AS [active], 
+      [drinksmenu].[choice] AS [choice]
+      FROM [dbo].[drinksmenu] AS [drinksmenu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="foodmenu" EntityType="twiliodevModel.Store.foodmenu" store:Type="Tables" store:Schema="dbo" store:Name="foodmenu">
+      <DefiningQuery>SELECT 
+      [foodmenu].[foodmenuid] AS [foodmenuid], 
+      [foodmenu].[menufor] AS [menufor], 
+      [foodmenu].[choiceofmenu] AS [choiceofmenu], 
+      [foodmenu].[active] AS [active], 
+      [foodmenu].[choice] AS [choice]
+      FROM [dbo].[foodmenu] AS [foodmenu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="lunchmenu" EntityType="twiliodevModel.Store.lunchmenu" store:Type="Tables" store:Schema="dbo" store:Name="lunchmenu">
+      <DefiningQuery>SELECT 
+      [lunchmenu].[lunchmenuid] AS [lunchmenuid], 
+      [lunchmenu].[choiceofmenu] AS [choiceofmenu], 
+      [lunchmenu].[active] AS [active], 
+      [lunchmenu].[choice] AS [choice]
+      FROM [dbo].[lunchmenu] AS [lunchmenu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NewRegistration" EntityType="twiliodevModel.Store.NewRegistration" store:Type="Tables" store:Schema="dbo" store:Name="NewRegistration">
+      <DefiningQuery>SELECT 
+      [NewRegistration].[Phonenumber] AS [Phonenumber], 
+      [NewRegistration].[phid] AS [phid]
+      FROM [dbo].[NewRegistration] AS [NewRegistration]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NewRegnentries" EntityType="twiliodevModel.Store.NewRegnentries" store:Type="Tables" store:Schema="dbo" store:Name="NewRegnentries">
+      <DefiningQuery>SELECT 
+      [NewRegnentries].[regnid] AS [regnid], 
+      [NewRegnentries].[Phonenumbers] AS [Phonenumbers]
+      FROM [dbo].[NewRegnentries] AS [NewRegnentries]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="participatingindividuals" EntityType="twiliodevModel.Store.participatingindividuals" store:Type="Tables" store:Schema="dbo" store:Name="participatingindividuals">
+      <DefiningQuery>SELECT 
+      [participatingindividuals].[recordid] AS [recordid], 
+      [participatingindividuals].[name] AS [name], 
+      [participatingindividuals].[email] AS [email], 
+      [participatingindividuals].[phone] AS [phone], 
+      [participatingindividuals].[pseudonym] AS [pseudonym], 
+      [participatingindividuals].[FoodPreferences] AS [FoodPreferences], 
+      [participatingindividuals].[DietaryRestrictions] AS [DietaryRestrictions], 
+      [participatingindividuals].[createddate] AS [createddate], 
+      [participatingindividuals].[sendphone] AS [sendphone], 
+      [participatingindividuals].[status] AS [status], 
+      [participatingindividuals].[participatingfor] AS [participatingfor], 
+      [participatingindividuals].[bread] AS [bread], 
+      [participatingindividuals].[cheese] AS [cheese], 
+      [participatingindividuals].[veggies] AS [veggies], 
+      [participatingindividuals].[sauces] AS [sauces], 
+      [participatingindividuals].[Seasonings] AS [Seasonings], 
+      [participatingindividuals].[drinks] AS [drinks], 
+      [participatingindividuals].[sides] AS [sides], 
+      [participatingindividuals].[lunchmenu] AS [lunchmenu]
+      FROM [dbo].[participatingindividuals] AS [participatingindividuals]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="participatinglocations" EntityType="twiliodevModel.Store.participatinglocations" store:Type="Tables" store:Schema="dbo" store:Name="participatinglocations">
+      <DefiningQuery>SELECT 
+      [participatinglocations].[locationid] AS [locationid], 
+      [participatinglocations].[locationaddress] AS [locationaddress], 
+      [participatinglocations].[participatingfor] AS [participatingfor], 
+      [participatinglocations].[active] AS [active], 
+      [participatinglocations].[displayorder] AS [displayorder], 
+      [participatinglocations].[choice] AS [choice]
+      FROM [dbo].[participatinglocations] AS [participatinglocations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="receivedtransactions" EntityType="twiliodevModel.Store.receivedtransactions" store:Type="Tables" store:Schema="dbo" store:Name="receivedtransactions">
+      <DefiningQuery>SELECT 
+      [receivedtransactions].[receivedtransactionid] AS [receivedtransactionid], 
+      [receivedtransactions].[phone] AS [phone], 
+      [receivedtransactions].[Responsereceived] AS [Responsereceived], 
+      [receivedtransactions].[datetimereceived] AS [datetimereceived], 
+      [receivedtransactions].[transactionfor] AS [transactionfor], 
+      [receivedtransactions].[actualtransaction] AS [actualtransaction]
+      FROM [dbo].[receivedtransactions] AS [receivedtransactions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="saucesmenu" EntityType="twiliodevModel.Store.saucesmenu" store:Type="Tables" store:Schema="dbo" store:Name="saucesmenu">
+      <DefiningQuery>SELECT 
+      [saucesmenu].[saucesmenuid] AS [saucesmenuid], 
+      [saucesmenu].[choiceofmenu] AS [choiceofmenu], 
+      [saucesmenu].[active] AS [active], 
+      [saucesmenu].[choice] AS [choice]
+      FROM [dbo].[saucesmenu] AS [saucesmenu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="seasoningsmenu" EntityType="twiliodevModel.Store.seasoningsmenu" store:Type="Tables" store:Schema="dbo" store:Name="seasoningsmenu">
+      <DefiningQuery>SELECT 
+      [seasoningsmenu].[seasoningsmenuid] AS [seasoningsmenuid], 
+      [seasoningsmenu].[choiceofmenu] AS [choiceofmenu], 
+      [seasoningsmenu].[active] AS [active], 
+      [seasoningsmenu].[choice] AS [choice]
+      FROM [dbo].[seasoningsmenu] AS [seasoningsmenu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="senttransactions" EntityType="twiliodevModel.Store.senttransactions" store:Type="Tables" store:Schema="dbo" store:Name="senttransactions">
+      <DefiningQuery>SELECT 
+      [senttransactions].[senttransactionid] AS [senttransactionid], 
+      [senttransactions].[phone] AS [phone], 
+      [senttransactions].[msgsentfor] AS [msgsentfor], 
+      [senttransactions].[msgsent] AS [msgsent], 
+      [senttransactions].[datetimesent] AS [datetimesent]
+      FROM [dbo].[senttransactions] AS [senttransactions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sidesmenu" EntityType="twiliodevModel.Store.sidesmenu" store:Type="Tables" store:Schema="dbo" store:Name="sidesmenu">
+      <DefiningQuery>SELECT 
+      [sidesmenu].[sidesmenuid] AS [sidesmenuid], 
+      [sidesmenu].[choiceofmenu] AS [choiceofmenu], 
+      [sidesmenu].[active] AS [active], 
+      [sidesmenu].[choice] AS [choice]
+      FROM [dbo].[sidesmenu] AS [sidesmenu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="smsblast" EntityType="twiliodevModel.Store.smsblast" store:Type="Tables" store:Schema="dbo" store:Name="smsblast">
+      <DefiningQuery>SELECT 
+      [smsblast].[blastid] AS [blastid], 
+      [smsblast].[recordid] AS [recordid], 
+      [smsblast].[phonenumber] AS [phonenumber], 
+      [smsblast].[recorddate] AS [recorddate], 
+      [smsblast].[participatingfor] AS [participatingfor], 
+      [smsblast].[breakfastsmssent] AS [breakfastsmssent], 
+      [smsblast].[breakfastsentdatetime] AS [breakfastsentdatetime], 
+      [smsblast].[lunchsmssent] AS [lunchsmssent], 
+      [smsblast].[lunchsentdatetime] AS [lunchsentdatetime], 
+      [smsblast].[participatelunch] AS [participatelunch], 
+      [smsblast].[participatebreakfast] AS [participatebreakfast], 
+      [smsblast].[newregisteration] AS [newregisteration]
+      FROM [dbo].[smsblast] AS [smsblast]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tbl_user" EntityType="twiliodevModel.Store.tbl_user" store:Type="Tables" store:Schema="dbo" store:Name="tbl_user">
+      <DefiningQuery>SELECT 
+      [tbl_user].[userid] AS [userid], 
+      [tbl_user].[username] AS [username], 
+      [tbl_user].[Password] AS [Password], 
+      [tbl_user].[firstname] AS [firstname], 
+      [tbl_user].[lastname] AS [lastname], 
+      [tbl_user].[email] AS [email], 
+      [tbl_user].[status] AS [status], 
+      [tbl_user].[Createddate] AS [Createddate], 
+      [tbl_user].[CreatedBy] AS [CreatedBy]
+      FROM [dbo].[tbl_user] AS [tbl_user]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="transactionstatus" EntityType="twiliodevModel.Store.transactionstatus" store:Type="Tables" store:Schema="dbo" store:Name="transactionstatus">
+      <DefiningQuery>SELECT 
+      [transactionstatus].[transactionstatusid] AS [transactionstatusid], 
+      [transactionstatus].[transactionid] AS [transactionid], 
+      [transactionstatus].[transactionfor] AS [transactionfor], 
+      [transactionstatus].[status] AS [status], 
+      [transactionstatus].[phone] AS [phone], 
+      [transactionstatus].[statusdatetime] AS [statusdatetime], 
+      [transactionstatus].[username] AS [username]
+      FROM [dbo].[transactionstatus] AS [transactionstatus]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="veggiesmenu" EntityType="twiliodevModel.Store.veggiesmenu" store:Type="Tables" store:Schema="dbo" store:Name="veggiesmenu">
+      <DefiningQuery>SELECT 
+      [veggiesmenu].[veggiesmenuid] AS [veggiesmenuid], 
+      [veggiesmenu].[choiceofmenu] AS [choiceofmenu], 
+      [veggiesmenu].[active] AS [active], 
+      [veggiesmenu].[choice] AS [choice]
+      FROM [dbo].[veggiesmenu] AS [veggiesmenu]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.breads' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="breads">
+    <Key>
+      <PropertyRef Name="breadmenuid" />
+    </Key>
+    <Property Name="breadmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.cheesemenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="cheesemenu">
+    <Key>
+      <PropertyRef Name="cheesemenuid" />
+    </Key>
+    <Property Name="cheesemenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.dietaryrestsrictions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="dietaryrestsrictions">
+    <Key>
+      <PropertyRef Name="restrictid" />
+    </Key>
+    <Property Name="restrictid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="menufor" Type="varchar" MaxLength="1" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.drinksmenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="drinksmenu">
+    <Key>
+      <PropertyRef Name="drinksmenuid" />
+    </Key>
+    <Property Name="drinksmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.foodmenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="foodmenu">
+    <Key>
+      <PropertyRef Name="foodmenuid" />
+      <PropertyRef Name="menufor" />
+    </Key>
+    <Property Name="foodmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="menufor" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.lunchmenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="lunchmenu">
+    <Key>
+      <PropertyRef Name="lunchmenuid" />
+    </Key>
+    <Property Name="lunchmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.NewRegistration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="NewRegistration">
+    <Key>
+      <PropertyRef Name="phid" />
+    </Key>
+    <Property Name="Phonenumber" Type="varchar" MaxLength="1000" />
+    <Property Name="phid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.NewRegnentries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="NewRegnentries">
+    <Key>
+      <PropertyRef Name="regnid" />
+    </Key>
+    <Property Name="regnid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Phonenumbers" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.participatingindividuals' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="participatingindividuals">
+    <Key>
+      <PropertyRef Name="recordid" />
+    </Key>
+    <Property Name="recordid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="phone" Type="varchar" MaxLength="12" />
+    <Property Name="pseudonym" Type="varchar(max)" />
+    <Property Name="FoodPreferences" Type="varchar(max)" />
+    <Property Name="DietaryRestrictions" Type="varchar(max)" />
+    <Property Name="createddate" Type="datetime" />
+    <Property Name="sendphone" Type="varchar" MaxLength="10" />
+    <Property Name="status" Type="varchar" MaxLength="1" />
+    <Property Name="participatingfor" Type="varchar" MaxLength="1" />
+    <Property Name="bread" Type="varchar" MaxLength="30" />
+    <Property Name="cheese" Type="varchar" MaxLength="30" />
+    <Property Name="veggies" Type="varchar" MaxLength="100" />
+    <Property Name="sauces" Type="varchar" MaxLength="100" />
+    <Property Name="Seasonings" Type="varchar" MaxLength="30" />
+    <Property Name="drinks" Type="varchar" MaxLength="30" />
+    <Property Name="sides" Type="varchar" MaxLength="30" />
+    <Property Name="lunchmenu" Type="varchar" MaxLength="160" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.participatinglocations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="participatinglocations">
+    <Key>
+      <PropertyRef Name="locationid" />
+      <PropertyRef Name="locationaddress" />
+      <PropertyRef Name="participatingfor" />
+      <PropertyRef Name="active" />
+    </Key>
+    <Property Name="locationid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="locationaddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="participatingfor" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="active" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="displayorder" Type="int" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.receivedtransactions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="receivedtransactions">
+    <Key>
+      <PropertyRef Name="receivedtransactionid" />
+    </Key>
+    <Property Name="receivedtransactionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="varchar" MaxLength="13" />
+    <Property Name="Responsereceived" Type="varchar" MaxLength="20" />
+    <Property Name="datetimereceived" Type="datetime" />
+    <Property Name="transactionfor" Type="varchar" MaxLength="1" />
+    <Property Name="actualtransaction" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.saucesmenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="saucesmenu">
+    <Key>
+      <PropertyRef Name="saucesmenuid" />
+    </Key>
+    <Property Name="saucesmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.seasoningsmenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="seasoningsmenu">
+    <Key>
+      <PropertyRef Name="seasoningsmenuid" />
+    </Key>
+    <Property Name="seasoningsmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.senttransactions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="senttransactions">
+    <Key>
+      <PropertyRef Name="senttransactionid" />
+      <PropertyRef Name="msgsentfor" />
+    </Key>
+    <Property Name="senttransactionid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="varchar" MaxLength="13" />
+    <Property Name="msgsentfor" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="msgsent" Type="varchar" MaxLength="160" />
+    <Property Name="datetimesent" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.sidesmenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="sidesmenu">
+    <Key>
+      <PropertyRef Name="sidesmenuid" />
+    </Key>
+    <Property Name="sidesmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.smsblast' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="smsblast">
+    <Key>
+      <PropertyRef Name="blastid" />
+    </Key>
+    <Property Name="blastid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="recordid" Type="int" />
+    <Property Name="phonenumber" Type="varchar" MaxLength="13" />
+    <Property Name="recorddate" Type="datetime" />
+    <Property Name="participatingfor" Type="varchar" MaxLength="1" />
+    <Property Name="breakfastsmssent" Type="varchar" MaxLength="1" />
+    <Property Name="breakfastsentdatetime" Type="datetime" />
+    <Property Name="lunchsmssent" Type="varchar" MaxLength="1" />
+    <Property Name="lunchsentdatetime" Type="datetime" />
+    <Property Name="participatelunch" Type="varchar" MaxLength="1" />
+    <Property Name="participatebreakfast" Type="varchar" MaxLength="1" />
+    <Property Name="newregisteration" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.tbl_user' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="firstname" Type="varchar" MaxLength="50" />
+    <Property Name="lastname" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="1" />
+    <Property Name="Createddate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.transactionstatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="transactionstatus">
+    <Key>
+      <PropertyRef Name="transactionstatusid" />
+      <PropertyRef Name="transactionid" />
+    </Key>
+    <Property Name="transactionstatusid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="transactionid" Type="int" Nullable="false" />
+    <Property Name="transactionfor" Type="varchar" MaxLength="1" />
+    <Property Name="status" Type="varchar" MaxLength="60" />
+    <Property Name="phone" Type="varchar" MaxLength="13" />
+    <Property Name="statusdatetime" Type="datetime" />
+    <Property Name="username" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'DB_9D55E2_hnidev.dbo.veggiesmenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="veggiesmenu">
+    <Key>
+      <PropertyRef Name="veggiesmenuid" />
+    </Key>
+    <Property Name="veggiesmenuid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="choiceofmenu" Type="varchar" MaxLength="160" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="choice" Type="int" />
+  </EntityType>
+  <Function Name="bkp_sp_receivedmessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="choice" Type="varchar" Mode="In" />
+    <Parameter Name="returnmessage" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_breakfastmessagessend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phone" Type="varchar" Mode="InOut" />
+    <Parameter Name="sentmessage" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Sp_CheckUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_getfoodmenudetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getorderstatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="transtype" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_getorderstatusinsertrecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phonenumber" Type="varchar" Mode="In" />
+    <Parameter Name="trantype" Type="varchar" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_getorderstatusrecorddetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phonenumber" Type="varchar" Mode="In" />
+    <Parameter Name="transtype" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_getorderstatusrecordlogdetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phonenumber" Type="varchar" Mode="In" />
+    <Parameter Name="transtype" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_getorderstatustotals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="trantype" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_getparticipatingindividuals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getparticipatinglocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getuserdetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getuserlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_insertblast" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="recordid" Type="int" Mode="In" />
+    <Parameter Name="phonenumber" Type="varchar" Mode="In" />
+    <Parameter Name="participatingfor" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insertupdatefoodmenudetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="foodmenuid" Type="int" Mode="In" />
+    <Parameter Name="menufor" Type="varchar" Mode="In" />
+    <Parameter Name="choiceofmenu" Type="varchar" Mode="In" />
+    <Parameter Name="active" Type="varchar" Mode="In" />
+    <Parameter Name="choice" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_insertupdatepartipatinglocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="locationid" Type="int" Mode="In" />
+    <Parameter Name="locationaddress" Type="varchar(max)" Mode="In" />
+    <Parameter Name="participatingfor" Type="varchar" Mode="In" />
+    <Parameter Name="displayorder" Type="int" Mode="In" />
+    <Parameter Name="choice" Type="int" Mode="In" />
+    <Parameter Name="active" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insertupdateuserlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="firstname" Type="varchar" Mode="In" />
+    <Parameter Name="lastname" Type="varchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insnewregnphone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phonenumbers" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_logsenttransactions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="msgsentfor" Type="varchar" Mode="In" />
+    <Parameter Name="msgsent" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_lunchmessagessend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phone" Type="varchar" Mode="InOut" />
+    <Parameter Name="sentmessage" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_messagessend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="InOut" />
+    <Parameter Name="sentmessage" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_receivedmessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="choice" Type="varchar" Mode="In" />
+    <Parameter Name="returnmessage" Type="varchar(max)" Mode="In" />
+  </Function>
+</Schema>
